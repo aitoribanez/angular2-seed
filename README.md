@@ -10,7 +10,7 @@ For further information take a look at [this blog post](http://blog.mgechev.com/
 
 # TODO
 - ~~use with npm~~
-- ~~Add SASS~
+- ~~Add SASS~~
 - Add browser-sync
 - ~~All in one JS and other for CSS~~
 - Update dependecies

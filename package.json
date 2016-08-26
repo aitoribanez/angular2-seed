@@ -1,8 +1,8 @@
 {
   "name": "angular2-seed",
-  "version": "1.0.0",
-  "description": "Base angular2 seed with gulp + browserify + sass + npm packages + minification + serve",
-  "main": "index.js",
+  "version": "0.1",
+  "description": "Base angular2 seed: gulp, browserify, SASS, npm packages, minification, serve",
+  "main": "app/main.js",
   "scripts": {
     "clean": "rm -rf dist",
     "typings": "typings install",
@@ -14,8 +14,12 @@
     "minify": "uglifyjs dist/bundle.js --screw-ie8 --compress --mangle --output dist/bundle.min.js",
     "browserify": "browserify dist/app/main.js > dist/bundle.js"
   },
-  "author": "Minko Gechev <mgechev@gmail.com>",
-  "license": "MIT",
+  "author": "Aitor Ibañez <freelance@aitoribanez.com>",
+  "contributors": [{
+    "name": "Minko Gechev",
+    "email": "mgechev@gmail.com"
+  }],
+  "license": "GPL-3.0 (https://www.gnu.org/licenses/gpl.html)",
   "devDependencies": {
     "browserify": "^13.0.1",
     "gulp": "^3.9.1",
