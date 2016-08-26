@@ -4,15 +4,15 @@
   "description": "Base angular2 seed with gulp + browserify + sass + npm packages + minification + serve",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rm -rf dist",
     "typings": "typings install",
     "serve": "http-server . -p 5556",
     "postinstall": "npm run typings",
-    "build": "npm run clean && tsc --allowJs && gulp sass && browserify -s main dist/app/main.js > dist/bundle.js",
-    "build_dev": "npm run build  && gulp concatCss && npm run serve",
-    "build_prod": "npm run build && gulp concatCss && npm run minify",
-    "minify": "uglifyjs dist/bundle.js --screw-ie8 --compress --mangle --output dist/bundle.min.js"
+    "build": "npm run clean && tsc --allowJs && gulp sass && npm run browserify",
+    "build_dev": "npm run build && gulp concat && npm run serve",
+    "build_prod": "npm run build && gulp concat && npm run minify && npm run serve",
+    "minify": "uglifyjs dist/bundle.js --screw-ie8 --compress --mangle --output dist/bundle.min.js",
+    "browserify": "browserify dist/app/main.js > dist/bundle.js"
   },
   "author": "Minko Gechev <mgechev@gmail.com>",
   "license": "MIT",

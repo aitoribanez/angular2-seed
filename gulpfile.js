@@ -4,6 +4,12 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var concat = require('gulp-concat')
 
+var _js = [  
+  './node_modules/zone.js/dist/zone.js',
+  './node_modules/reflect-metadata/Reflect.js',
+  './dist/bundle.js'
+]
+
 /* SASS */
 gulp
   .task('sass', function () {
@@ -24,3 +30,14 @@ gulp.task('concatCss', function () {
     .pipe(concat('styles.css'))
     .pipe(gulp.dest('./dist/'));
 });
+
+/* CONCAT - JS */
+gulp.task('concatJs', function () {
+  return gulp
+    .src(_js)
+    .pipe(concat('bundle.js'))
+    .pipe(gulp.dest('./dist/'))
+});
+
+/* CONCAT */
+gulp.task('concat', ['concatCss', 'concatJs'])
