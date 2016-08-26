@@ -1,6 +1,6 @@
 {
   "name": "angular2-seed",
-  "version": "0.1",
+  "version": "0.1.0",
   "description": "Base angular2 seed: gulp, browserify, SASS, npm packages, minification, serve",
   "main": "app/main.js",
   "scripts": {
@@ -15,16 +15,24 @@
     "browserify": "browserify dist/app/main.js > dist/bundle.js"
   },
   "author": "Aitor Ibañez <freelance@aitoribanez.com>",
-  "contributors": [{
-    "name": "Minko Gechev",
-    "email": "mgechev@gmail.com"
-  }],
+  "contributors": [
+    {
+      "name": "Minko Gechev",
+      "email": "mgechev@gmail.com"
+    }
+  ],
   "license": "GPL-3.0 (https://www.gnu.org/licenses/gpl.html)",
   "devDependencies": {
+    "browser-sync": "^2.14.0",
     "browserify": "^13.0.1",
+    "empty-file": "^1.0.1",
     "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
     "gulp-concat": "^2.6.0",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.3.2",
+    "gulp-tsc": "^1.2.0",
     "http-server": "^0.9.0",
     "typescript": "^1.9.0-dev.20160625-1.0",
     "typings": "1.0.4",

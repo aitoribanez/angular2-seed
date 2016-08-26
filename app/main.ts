@@ -7,6 +7,7 @@ var dec = decode(id);
 
 console.log(id)
 console.log(dec)
+console.log("a")
 
 
 bootstrap(AppComponent);
