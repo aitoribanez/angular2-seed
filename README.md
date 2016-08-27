@@ -1,16 +1,14 @@
-# How to use?
-
-# INSTALL
+# Install
 ```bash
 npm install
 ```
 
-# RUN
+# Run
 ```bash
 npm run build_dev OR npm run build_prod
 ```
 
-# WATCH / LIVE RELOAD
+# Watch / Live reload
 ```bash
 gulp serve
 ```
@@ -27,6 +25,4 @@ For further information take a look at [this blog post](http://blog.mgechev.com/
 - Add Linter (standard)
 
 # License
-
-MIT
-
+GPL-3.0 (https://www.gnu.org/licenses/gpl.html)
