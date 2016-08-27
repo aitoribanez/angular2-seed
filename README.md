@@ -14,6 +14,11 @@ gulp serve
 ```
 For now, works for HTML and SCSS files. TS depending.
 
+# Linter
+```bash
+gulp tslint
+```
+
 For further information take a look at [this blog post](http://blog.mgechev.com/2016/06/26/tree-shaking-angular2-production-build-rollup-javascript/).
 
 # Update local dependencies
@@ -26,7 +31,7 @@ $ npm install
 # TODO
 - ~~Use with npm~~
 - ~~Add SASS~~
-- Add browser-sync
+- Add browser-sync for ~~HTML~~, ~~SASS~~ and TypeScript
 - ~~All in one JS and~~ other for CSS
 - ~~Update dependencies~~
 - ~~Add Linter (tslint)~~
