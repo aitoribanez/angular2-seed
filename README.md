@@ -16,12 +16,19 @@ For now, works for HTML and SCSS files. TS depending.
 
 For further information take a look at [this blog post](http://blog.mgechev.com/2016/06/26/tree-shaking-angular2-production-build-rollup-javascript/).
 
+# Update local dependencies
+```bash
+$ npm install -g npm-check-updates
+$ npm-check-updates -u
+$ npm install 
+```
+
 # TODO
 - ~~Use with npm~~
 - ~~Add SASS~~
 - Add browser-sync
 - ~~All in one JS and~~ other for CSS
-- Update dependencies
+- ~~Update dependencies~~
 - Add Linter (standard)
 
 # License
