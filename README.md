@@ -29,7 +29,7 @@ $ npm install
 - Add browser-sync
 - ~~All in one JS and~~ other for CSS
 - ~~Update dependencies~~
-- Add Linter (standard)
+- ~~Add Linter (tslint)~~
 
 # License
 GPL-3.0 (https://www.gnu.org/licenses/gpl.html)
