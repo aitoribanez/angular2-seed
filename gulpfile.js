@@ -1,14 +1,25 @@
 'use strict'
  
-var gulp = require('gulp')
-var sass = require('gulp-sass')
-var browserSync = require('browser-sync').create()
-var concat = require('gulp-concat')
-var clean = require('gulp-clean')
-var fs = require('fs')
+const gulp = require('gulp')
+const sass = require('gulp-sass')
+const browserSync = require('browser-sync').create()
+const concat = require('gulp-concat')
+const fs = require('fs')
 const emptyFile = require('empty-file')
-var typescript = require('gulp-tsc')
- 
+const tsc = require('gulp-typescript-compiler')
+const browserify = require('browserify')
+const tsify = require('tsify');
+
+// use gulp-run to start a pipeline 
+/* gulp.task('browserify', function() {
+  return browserify()
+    .add('app/main.ts')
+    .plugin(tsify, { noImplicitAny: true })
+    .bundle()
+    .pipe(process.stdout.toString())
+    .pipe(gulp.dest('./dist/bundle.js'));
+}) */
+
 var _js = [  
   './node_modules/zone.js/dist/zone.js',
   './node_modules/reflect-metadata/Reflect.js',
@@ -32,19 +43,13 @@ gulp.task('sass', function () {
     .pipe(browserSync.stream());
 })
 
- 
-// gulp.task('sass:watch', function () {
-//  gulp.watch('./sass/**/*.scss', ['sass']);
-// });
-
 /* CONCAT - CSS */
-/* gulp.task('concatCss', function () {
-    console.log("concating")
+gulp.task('concatCss', function () {
   return gulp
     .src('./dist/tmp/*.css')
     .pipe(concat('styles2.css'))
     .pipe(gulp.dest('./dist'));
-}); */
+});
 
 /* CONCAT - JS */
 gulp.task('concatJs', function () {
@@ -67,11 +72,15 @@ gulp.task('serve', function() {
 
     gulp.watch(['app/*.scss', 'app/**/*.scss'], ['sass', browserSync.reload]);
     gulp.watch(['*.html', 'app/*.html']).on('change', browserSync.reload);
-   // gulp.watch(['app/*.ts'], ['ts', browserSync.reload]);
+    // gulp.watch(['app/*.ts'], ['ts', 'browserify', browserSync.reload]);
 });
 
-gulp.task('ts', function(){
-  gulp.src(['app/*.ts'])
-    .pipe(typescript())
-    .pipe(gulp.dest('./dist/'))
-});
+/* gulp.task('ts', function() {
+  return gulp
+    .src('app/*.ts', {read: false})
+    .pipe(tsc({
+      resolve: true
+    }))
+    .pipe(gulp.dest('dist'))
+    .pipe(browserSync.reload({stream:true}));
+}) */

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'my-app',
-  template: 'Agsur!'
+  template: 'AssAGHJdddsdassddHHHHHAAAasddssur!'
 })
 export class AppComponent {}
 

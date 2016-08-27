@@ -6,6 +6,7 @@
   "scripts": {
     "clean": "rm -rf dist",
     "typings": "typings install",
+    "tsc": "tsc --allowJs",
     "serve": "http-server . -p 5556",
     "postinstall": "npm run typings",
     "build": "npm run clean && tsc --allowJs && gulp sass && npm run browserify",
@@ -24,16 +25,15 @@
   "license": "GPL-3.0 (https://www.gnu.org/licenses/gpl.html)",
   "devDependencies": {
     "browser-sync": "^2.14.0",
-    "browserify": "^13.0.1",
+    "browserify": "^13.1.0",
     "empty-file": "^1.0.1",
     "gulp": "^3.9.1",
-    "gulp-clean": "^0.3.2",
     "gulp-concat": "^2.6.0",
     "gulp-minify-css": "^1.2.4",
-    "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.3.2",
     "gulp-tsc": "^1.2.0",
     "http-server": "^0.9.0",
+    "tsify": "^1.0.4",
     "typescript": "^1.9.0-dev.20160625-1.0",
     "typings": "1.0.4",
     "uglifyjs": "^2.4.10"
