@@ -15,6 +15,7 @@
     "noImplicitReturns": true,
     "noImplicitUseStrict": false,
     "noFallthroughCasesInSwitch": true,
+    "allowJs": true,
     "outDir": "./dist"
   },
   "compileOnSave": true,

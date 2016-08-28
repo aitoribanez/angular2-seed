@@ -29,9 +29,9 @@ $ npm install
 ```
 # Example. Weather in three day of a coordenates.
 
-Needs openweather API key. http://openweathermap.org/
-Rename config.example.ts to config.ts
-Add API key to OPEN_WEATHER_KEY
+- Needs openweather API key. http://openweathermap.org/
+- Rename config.example.ts to config.ts
+- Add API key to OPEN_WEATHER_KEY
 
 # TODO
 - ~~Use with npm~~
@@ -40,6 +40,7 @@ Add API key to OPEN_WEATHER_KEY
 - ~~All in one JS and~~ other for CSS
 - ~~Update dependencies~~
 - ~~Add Linter (tslint)~~
+- Gulp with ES6 https://www.timroes.de/2015/10/25/using-ecmascript6-es6-es2015-with-gulp/
 
 # License
 GPL-3.0 (https://www.gnu.org/licenses/gpl.html)
