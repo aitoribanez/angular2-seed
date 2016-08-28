@@ -47,6 +47,7 @@
     "@angular/platform-browser": "^2.0.0-rc.5",
     "@angular/platform-browser-dynamic": "^2.0.0-rc.5",
     "es6-shim": "^0.35.1",
+    "openweather-apis": "github:aitoribanez/openweather-api",
     "reflect-metadata": "^0.1.8",
     "rxjs": "5.0.0-beta.11",
     "uuid-base64": "^1.0.0",

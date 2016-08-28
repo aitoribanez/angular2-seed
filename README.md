@@ -27,6 +27,11 @@ $ npm install -g npm-check-updates
 $ npm-check-updates -u
 $ npm install 
 ```
+# Example. Weather in three day of a coordenates.
+
+Needs openweather API key. http://openweathermap.org/
+Rename config.example.ts to config.ts
+Add API key to OPEN_WEATHER_KEY
 
 # TODO
 - ~~Use with npm~~

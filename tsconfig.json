@@ -11,13 +11,13 @@
     "pretty": true,
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "noImplicitReturns": true,
     "noImplicitUseStrict": false,
     "noFallthroughCasesInSwitch": true,
     "outDir": "./dist"
   },
-  "compileOnSave": false,
+  "compileOnSave": true,
   "files": [
     "app/main.ts",
     "typings/index.d.ts"
