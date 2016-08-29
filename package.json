@@ -1,12 +1,12 @@
 {
   "name": "angular2-seed",
   "version": "0.2.0",
-  "description": "Base angular2 seed: gulp, browserify, SASS, npm packages, eslint, minification, serve",
+  "description": "Base angular2 seed: gulp, browserify, SASS, npm packages, eslint, minification, serve, use example",
   "main": "app/main.js",
   "scripts": {
     "clean": "rm -rf dist",
     "typings": "typings install",
-    "tsc": "gulp tslint && tsc --allowJs",
+    "tsc": "gulp tslint && tsc",
     "serve": "http-server . -p 5556",
     "postinstall": "npm run typings",
     "build": "npm run clean && npm run tsc && gulp sass && npm run browserify",
