@@ -9,7 +9,10 @@ import { WeatherService } from "./app.service";
 
 export class AppComponent {
   constructor(private _weatherInfo: WeatherService) {
-    console.log("appc");
-    console.log(this._weatherInfo.getWeather());
+    let _weather = this._weatherInfo.getWeather();
+    
+    _weather.then(function(res) {
+      console.log(res);
+    });
   }
 }
