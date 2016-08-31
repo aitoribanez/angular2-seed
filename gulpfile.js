@@ -1,21 +1,22 @@
-"use strict"
+'use strict'
  
-const gulp = require("gulp");
-const sass = require("gulp-sass");
-const browserSync = require("browser-sync").create();
-const concat = require("gulp-concat");
-const fs = require("fs");
-const emptyFile = require("empty-file");
-const tsc = require("gulp-typescript-compiler");
-const browserify = require("browserify");
-const tsify = require("tsify");
-const tslint = require("gulp-tslint");
+const gulp = require('gulp')
+const sass = require('gulp-sass')
+const browserSync = require('browser-sync').create()
+const concat = require('gulp-concat')
+const fs = require('fs')
+const emptyFile = require('empty-file')
+const tsc = require('gulp-typescript-compiler')
+const browserify = require('browserify')
+const tsify = require('tsify')
+const tslint = require('gulp-tslint')
 
 /* LINTER */
 gulp.task("tslint", function () {
     gulp.src(["app/*.ts"])
         .pipe(tslint({
-            formatter: "verbose"
+            formatter: "verbose",
+            configuration: "tslint.json"
         }))
         .pipe(tslint.report())
 })
