@@ -1,19 +1,11 @@
 import { Component } from '@angular/core'
 import { WeatherService } from './app.service'
 import { ToHourMin } from './toHourMin.pipe'
+import { CONFIG } from '../config'
 
 @Component({
   selector: 'my-weather',
-  template: `Humedad: {{ _humidity }}
-    Presión {{ _pressure }}
-    Temperatura {{ _temp }}
-    Temperatura mínima {{ _minTemp }}
-    Temperatura máxima {{ _maxTemp }}
-    Puesta de sol {{ _sunrise | toHourMin }}
-    Amanecer {{ _sunset | toHourMin }}
-    Icono {{ _icon }}
-    Nombre {{ _name }}
-    `,
+  templateUrl: `${CONFIG.APP_ROOT}/app.component.html`,
   providers: [ WeatherService ],
   pipes: [ ToHourMin ]
 })
@@ -31,8 +23,8 @@ export class AppComponent {
   _name: string
 
   constructor(private _weatherInfo: WeatherService) {
-    let _weather = this._weatherInfo.getWeather()
-    _weather.then((res) => {
+    let _getWeather = this._weatherInfo.getWeather()
+    _getWeather.then((res) => {
       // console.log(res['sys']['sunrise'])
       this._humidity = res['main']['humidity']
       this._pressure = res['main']['pressure']
