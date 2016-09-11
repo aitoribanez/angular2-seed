@@ -6,92 +6,82 @@ const browserSync = require('browser-sync').create()
 const concat = require('gulp-concat')
 const fs = require('fs')
 const emptyFile = require('empty-file')
-const tsc = require('gulp-typescript-compiler')
+const typescript = require('gulp-typescript')
+const tscConfig = require('./tsconfig.json')
 const browserify = require('browserify')
 const tsify = require('tsify')
 const tslint = require('gulp-tslint')
-
-/* LINTER */
-gulp.task("tslint", function () {
-    gulp.src(["app/*.ts"])
-        .pipe(tslint({
-            formatter: "verbose",
-            configuration: "tslint.json"
-        }))
-        .pipe(tslint.report())
-})
-;
-
-// use gulp-run to start a pipeline 
-/* gulp.task("browserify", function() {
-  return browserify()
-    .add("app/main.ts")
-    .plugin(tsify, { noImplicitAny: true })
-    .bundle()
-    .pipe(process.stdout.toString())
-    .pipe(gulp.dest("./dist/bundle.js"));
-}) */
+const source = require('vinyl-source-stream')
+const runSequence = require('run-sequence').use(gulp)
 
 var _js = [  
   "./node_modules/zone.js/dist/zone.js",
   "./node_modules/reflect-metadata/Reflect.js",
-  "./dist/bundle.js"
+  "./dist/src.js"
 ]
-gulp.task("clean", function () {
-   // fs.writeFile("dist/styles.css", "", function(){console.log("cleaned")})
 
-   emptyFile("dist/styles.css").then(function() {
-    fs.readFileSync("file/path", "utf8");
- });
+gulp.task("serve", function() {
+    browserSync.init({
+        server: "./"
+    })
+
+    gulp.watch(["app/*.scss", "app/**/*.scss"], ["sass", browserSync.reload])
+    gulp.watch(["*.html", "app/*.html"]).on("change", browserSync.reload)
+    gulp.watch(["app/*.ts"], ['peer', browserSync.reload])
 })
 
-/* SASS */
 gulp.task("sass", function () {
   gulp
     .src(["./app/*.scss", "./app/**/*.scss"])
     .pipe(sass().on("error", sass.logError))
     .pipe(gulp.dest("./dist"))
-    .pipe(browserSync.stream());
+    .pipe(browserSync.stream())
 })
 
-/* CONCAT - CSS */
+gulp.task('peer', function(cb) {
+  return runSequence("tslint", "ts", 'browserify', 'concatJs', cb)
+})
+
+/* LINTER */
+gulp.task("tslint", function () {
+  gulp.src(["app/*.ts"])
+    .pipe(tslint({
+      formatter: "verbose",
+      configuration: "tslint.json"
+    }))
+    .pipe(tslint.report())
+})
+
+gulp.task("ts", function() {
+  return gulp
+    .src('./app/*.ts')
+    .pipe(typescript(tscConfig.compilerOptions))
+    .pipe(gulp.dest('./dist'))
+})
+
+gulp.task("browserify", function() {
+  var bundler = browserify({basedir: './'})
+    .add('./dist/app/main.js')
+    .plugin(tsify)
+
+  return bundler.bundle()
+    .pipe(source('src.js'))
+    .pipe(gulp.dest('./dist'))
+})
+
+/* CONCAT */
+gulp.task("concat", ["concatJs", "concatCss"])
+
 gulp.task("concatCss", function () {
   return gulp
     .src("./dist/tmp/*.css")
     .pipe(concat("styles.css"))
-    .pipe(gulp.dest("./dist"));
-});
+    .pipe(gulp.dest("./dist"))
+})
 
-/* CONCAT - JS */
 gulp.task("concatJs", function () {
   return gulp
     .src(_js)
     .pipe(concat("bundle.js"))
     .pipe(gulp.dest("./dist/"))
-});
-
-/* CONCAT */
-gulp.task("concat", ["concatJs", "concatCss"])
-
-/* LIVE RELOAD */
-// Static Server + watching scss/html files
-gulp.task("serve", function() {
-
-    browserSync.init({
-        server: "./"
-    });
-
-    gulp.watch(["app/*.scss", "app/**/*.scss"], ["sass", browserSync.reload]);
-    gulp.watch(["*.html", "app/*.html"]).on("change", browserSync.reload);
-    // gulp.watch(["app/*.ts"], ["tslint", "ts", "browserify", browserSync.reload]);
-});
-
-/* gulp.task("ts", function() {
-  return gulp
-    .src("app/*.ts", {read: false})
-    .pipe(tsc({
-      resolve: true
-    }))
-    .pipe(gulp.dest("dist"))
-    .pipe(browserSync.reload({stream:true}));
-}) */
+})

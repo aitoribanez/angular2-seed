@@ -8,11 +8,11 @@ npm install
 npm run build_dev OR npm run build_prod
 ```
 
-# Watch / Live reload
+# Watch && Live reload
 ```bash
-gulp serve
+gulp serve / npm run watch
 ```
-For now, works for HTML and SCSS files. TS depending.
+Works for HTML SCSS (SASS) and ts (TypeScript) files.
 
 # Linter
 ```bash
@@ -52,7 +52,7 @@ TSLint configurable rules (http://palantir.github.io/tslint/rules/)
 # TODO
 - ~~Use with npm~~
 - ~~Add SASS~~
-- Add browser-sync for ~~HTML~~, ~~SASS~~ and TypeScript
+- ~~Add browser-sync for HTML, SASS and TypeScript~~
 - ~~All in one JS and~~ other for CSS
 - ~~Update dependencies~~
 - ~~Add Linter (tslint)~~
